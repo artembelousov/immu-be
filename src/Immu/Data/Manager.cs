@@ -191,5 +191,15 @@ namespace Immu.Data
                 return _context.Challenges.ToList();
             }
         }
+
+        public async Task<List<UserChallenge>> GetUserChallengesAsync(string email, ChallengeCategory category)
+        {
+            var result = await _context.UserChallenges
+                .Include(uc => uc.Challenge)
+                .Where(uc => uc.UserEmail == email && uc.Challenge.Category == category)
+                .ToListAsync();
+
+            return result;
+        }
     }
 }

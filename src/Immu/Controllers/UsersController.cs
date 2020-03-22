@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
+using System.Linq;
 using System.Threading.Tasks;
 using Immu.Data;
 using Immu.Models;
@@ -141,7 +143,7 @@ namespace Immu.Controllers
                 return new ObjectResult($"Unexpected exception during execution: {e.Message}") { StatusCode = 500 };
             }
         }
-        
+
         [HttpPut]
         [Route("{email}/challenges/{challengeId}")]
         public async Task<ActionResult> UpdateUserChallenge([FromRoute]string email, [FromRoute]Int64 challengeId, [FromBody] UserChallengeUpdateRequest body)
@@ -161,5 +163,23 @@ namespace Immu.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("{email}/challenges")]
+        public async Task<ActionResult> GetUserChallenges([FromRoute]string email, [Required][FromQuery] ChallengeCategory category)
+        {
+            try
+            {
+                var challenges = await _manager.GetUserChallengesAsync(email, category);
+                return new OkObjectResult(challenges);
+            }
+            catch (KeyNotFoundException)
+            {
+                return new NotFoundResult();
+            }
+            catch (Exception e)
+            {
+                return new ObjectResult($"Unexpected exception during execution: {e.Message}") { StatusCode = 500 };
+            }
+        }
     }
 }
