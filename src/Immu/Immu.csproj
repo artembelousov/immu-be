@@ -17,5 +17,28 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\assets\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\assets\air.png" />
+    <None Include="wwwroot\assets\book.png" />
+    <None Include="wwwroot\assets\breath.png" />
+    <None Include="wwwroot\assets\family.png" />
+    <None Include="wwwroot\assets\food.png" />
+    <None Include="wwwroot\assets\gadgets.png" />
+    <None Include="wwwroot\assets\inform.png" />
+    <None Include="wwwroot\assets\meditation.png" />
+    <None Include="wwwroot\assets\morning.png" />
+    <None Include="wwwroot\assets\music.png" />
+    <None Include="wwwroot\assets\plants.png" />
+    <None Include="wwwroot\assets\skills.png" />
+    <None Include="wwwroot\assets\sleep.png" />
+    <None Include="wwwroot\assets\wash.png" />
+    <None Include="wwwroot\assets\water.png" />
+    <None Include="wwwroot\assets\write.png" />
+  </ItemGroup>
+
 
 </Project>
